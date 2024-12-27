@@ -6,6 +6,10 @@ A 3D chess game built with Three.js and Vite.
 
 This project is a 3D chess game that allows users to play chess in a three-dimensional environment. It leverages the power of Three.js for rendering 3D graphics and Vite for fast and efficient development.
 
+## Online Website
+
+You can view the website online at [Chess 3D Deploy](https://chess-3d-deploy.onrender.com/).
+
 ## Installation
 
 To get started with the project, follow these steps:
