@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>3D chess-o by P.F.</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link type="text/css" rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+	<!-- Div to display camera position -->
+	<div id="cameraPosition" class="display-none">Camera Position: X: 0, Y: 0, Z: 0</div>
+	
+	<div id="dialogKnight" class="chesspiece" style="display: none;">
+		<div class="dialogHeader">
+			<h3>Knight</h3>
+			<button class="closeDialogButton" data-dialog="dialogKnight">
+				<svg viewBox="0 0 24 24">
+					<path d="M18.3 5.71a1 1 0 0 0-1.42 0L12 10.59 7.12 5.71a1 1 0 0 0-1.42 1.42L10.59 12l-4.89 4.88a1 1 0 0 0 1.42 1.42L12 13.41l4.88 4.89a1 1 0 0 0 1.42-1.42L13.41 12l4.89-4.88a1 1 0 0 0 0-1.41z"/>
+				</svg>
+			</button>
+		</div>
+		<ul>
+			<li data-normal="The knight moves in an L-shaped pattern: two squares in one direction and one square perpendicular to that direction. It's the only piece that can jump over other pieces."
+				data-toilet="The toilet brush, our valiant knight, bravely ventures where no other tool dares to go. With its L-shaped scrubbing motion, it conquers the porcelain realm's toughest challenges."></li>
+			<hr>
+			<li data-normal="Each player starts with two knights, positioned between the bishops and rooks. Their unique movement pattern makes them excellent for tactical maneuvers and surprising attacks."
+				data-toilet="Armed with bristles instead of a sword, the toilet brush knight is always ready to tackle the dirtiest of foes, ensuring the bathroom remains a pristine battlefield."></li>
+			<hr>
+			<li data-normal="Knights are particularly effective in closed positions where their ability to jump over pieces can be a significant advantage."
+				data-toilet="The toilet brush knight excels in tight spaces, maneuvering around obstacles to reach every corner and crevice."></li>
+			<hr>
+			<li data-normal="In the endgame, knights can be powerful allies, especially in combination with pawns, creating threats that are difficult to counter."
+				data-toilet="In the final stages of cleaning, the toilet brush knight ensures no spot is left untouched, working in tandem with other tools for a thorough clean."></li>
+		</ul>
+	</div>
+	<div id="dialogPawn" class="chesspiece" style="display: none;">
+		<div class="dialogHeader">
+			<h3>Pawn</h3>
+			<button class="closeDialogButton" data-dialog="dialogPawn">
+				<svg viewBox="0 0 24 24">
+					<path d="M18.3 5.71a1 1 0 0 0-1.42 0L12 10.59 7.12 5.71a1 1 0 0 0-1.42 1.42L10.59 12l-4.89 4.88a1 1 0 0 0 1.42 1.42L12 13.41l4.88 4.89a1 1 0 0 0 1.42-1.42L13.41 12l4.89-4.88a1 1 0 0 0 0-1.41z"/>
+				</svg>
+			</button>
+		</div>
+		<ul>
+				<li data-normal="The pawn is the most numerous chess piece, with 8 per player. It moves one square forward but captures diagonally. On its first move, a pawn can move two squares."
+				data-toilet="The toilet paper roll, humble yet essential, moves forward one square at a time. In its first move, it can advance two squares, representing a fresh roll's enthusiasm."></li>
+			<hr>
+			<li data-normal="Strategically, pawns serve as defensive shields, control important squares, and can create pawn chains. Weak pawn structures can be a disadvantage."
+				data-toilet="Strategic placement of toilet paper rolls is crucial. They form defensive barriers against emergencies and can be linked together in storage chains."></li>
+			<hr>
+			<li data-normal="Pawns can be promoted to any other piece (except a king) upon reaching the opponent's back rank, often becoming queens."
+				data-toilet="When a toilet paper roll reaches the end of its journey, it can be replaced with a new roll, ready to take on any challenge."></li>
+			<hr>
+			<li data-normal="Pawns are often used to control key squares and create space for more powerful pieces to operate."
+				data-toilet="Toilet paper rolls are essential for maintaining order and cleanliness, ensuring that the bathroom remains a well-organized space."></li>
+		</ul>
+	</div>
+	<div id="dialogBishop" class="chesspiece" style="display: none;">
+		<div class="dialogHeader">
+			<h3>Bishop</h3>
+			<button class="closeDialogButton" data-dialog="dialogBishop">
+				<svg viewBox="0 0 24 24">
+					<path d="M18.3 5.71a1 1 0 0 0-1.42 0L12 10.59 7.12 5.71a1 1 0 0 0-1.42 1.42L10.59 12l-4.89 4.88a1 1 0 0 0 1.42 1.42L12 13.41l4.88 4.89a1 1 0 0 0 1.42-1.42L13.41 12l4.89-4.88a1 1 0 0 0 0-1.41z"/>
+				</svg>
+			</button>
+		</div>
+		<ul>
+				<li data-normal="The bishop moves diagonally any number of squares. Each player starts with two bishops, one on a light square and one on a dark square."
+				data-toilet="The plunger, our trusty bishop, moves diagonally through the bathroom, ready to tackle any clog with divine precision."></li>
+			<hr>
+			<li data-normal="Bishops are powerful in open positions and can control long diagonals, making them valuable for both offense and defense."
+				data-toilet="With a swift plunge, the bishop ensures the flow remains unblocked, maintaining the sanctity of the bathroom's plumbing."></li>
+			<hr>
+			<li data-normal="Bishops work well in pairs, controlling both light and dark squares, creating a formidable presence on the board."
+				data-toilet="A pair of plungers can handle any clog, ensuring that both light and dark corners of the bathroom are kept clear."></li>
+			<hr>
+			<li data-normal="In the endgame, bishops can dominate open boards, using their long-range capabilities to control key areas."
+				data-toilet="In the final stages of cleaning, the plunger's reach ensures that no blockage remains, keeping the bathroom in perfect working order."></li>
+		</ul>
+	</div>
+	<div id="dialogRook" class="chesspiece" style="display: none;">
+		<div class="dialogHeader">
+			<h3>Rook</h3>
+			<button class="closeDialogButton" data-dialog="dialogRook">
+				<svg viewBox="0 0 24 24">
+					<path d="M18.3 5.71a1 1 0 0 0-1.42 0L12 10.59 7.12 5.71a1 1 0 0 0-1.42 1.42L10.59 12l-4.89 4.88a1 1 0 0 0 1.42 1.42L12 13.41l4.88 4.89a1 1 0 0 0 1.42-1.42L13.41 12l4.89-4.88a1 1 0 0 0 0-1.41z"/>
+				</svg>
+			</button>
+		</div>
+		<ul>
+				<li data-normal="The rook moves in straight lines, horizontally or vertically, across the board. It is one of the most powerful pieces in chess."
+				data-toilet="The bidet, our mighty rook, stands tall and powerful, ready to cleanse with a precise stream, ensuring a refreshing experience."></li>
+			<hr>
+			<li data-normal="Rooks are especially powerful in the endgame, where they can control entire rows and columns, exerting significant influence over the board."
+				data-toilet="In the endgame of bathroom battles, the bidet's influence is unmatched, providing a clean sweep across the entire area."></li>
+		</ul>
+	</div>
+	<div id="dialogQueen" class="chesspiece" style="display: none;">
+		<div class="dialogHeader">
+			<h3>Queen</h3>
+			<button class="closeDialogButton" data-dialog="dialogQueen">
+				<svg viewBox="0 0 24 24">
+					<path d="M18.3 5.71a1 1 0 0 0-1.42 0L12 10.59 7.12 5.71a1 1 0 0 0-1.42 1.42L10.59 12l-4.89 4.88a1 1 0 0 0 1.42 1.42L12 13.41l4.88 4.89a1 1 0 0 0 1.42-1.42L13.41 12l4.89-4.88a1 1 0 0 0 0-1.41z"/>
+				</svg>
+			</button>
+		</div>
+		<ul>
+				<li data-normal="The queen is the most powerful piece on the chessboard, combining the abilities of both the rook and the bishop. It moves any number of squares in straight lines, either horizontally, vertically, or diagonally."
+				data-toilet="The toilet, the queen of the bathroom, reigns supreme with the ability to flush away any problem, combining the power of water and gravity."></li>
+			<hr>
+			<li data-normal="Strategically, the queen is often the central figure in offensive tactics, capable of launching attacks and defending critical pieces with equal efficacy."
+				data-toilet="In the realm of bathroom strategy, the toilet's flush is the ultimate move, clearing the board and ensuring a fresh start."></li>
+		</ul>
+	</div>
+	<div id="dialogKing" class="chesspiece" style="display: none;">
+		<div class="dialogHeader">
+			<h3>King</h3>
+			<button class="closeDialogButton" data-dialog="dialogKing">
+				<svg viewBox="0 0 24 24">
+					<path d="M18.3 5.71a1 1 0 0 0-1.42 0L12 10.59 7.12 5.71a1 1 0 0 0-1.42 1.42L10.59 12l-4.89 4.88a1 1 0 0 0 1.42 1.42L12 13.41l4.88 4.89a1 1 0 0 0 1.42-1.42L13.41 12l4.89-4.88a1 1 0 0 0 0-1.41z"/>
+				</svg>
+			</button>
+		</div>
+		<ul>
+				<li data-normal="The king is the most important piece in chess, whose safety is the primary objective of the game. While it moves only one square in any direction, its strategic importance is paramount."
+				data-toilet="The urinal, the king of the restroom, stands as the central figure, ensuring relief with a single, well-aimed move."></li>
+			<hr>
+			<li data-normal="In addition to its defensive role, the king can sometimes be used in the endgame to support pawns or other pieces, assisting in achieving checkmate. Castling is a unique move involving the king and a rook."
+				data-toilet="In the endgame of restroom visits, the urinal's presence is crucial, supporting the flow and maintaining order. Its strategic placement ensures a swift and efficient experience."></li>
+		</ul>
+	</div>
+
+	<div class="controls">
+        <p>Toilet Mode</p>
+        <label class="toggle">
+            <input type="checkbox" id="toggleSwitch">
+            <span class="slider"></span>
+        </label>
+    </div>
+	<div class="controls-left">
+        <p>Move chessboard by dragging, zoom with a pinch or scrollwheel. <br> Every chesspiece is clickable</p>
+        
+    </div>
+
+	<div id="container"></div>
+
+	<div id="tapToStartOverlay" class="tap-to-start">Tap to Start</div>
+
+	<script type="importmap">
+				{
+					"imports": {
+						"three": "../build/three.module.js",
+						"three/addons/": "./jsm/"
+					}
+				}
+		</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+	<script type="module" src="/src/main.js"></script>
+
+</body>
+
+</html>

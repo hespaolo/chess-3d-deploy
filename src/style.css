@@ -1,0 +1,233 @@
+:root {
+  --primary-color: #663399;
+  --accent-color: #c78c34;
+  --button-color: #6a0dad;
+  --button-hover: #9b4f96;
+  --button-active: #5a0c83;
+  --text-light: #fff;
+  --transition-smooth: 0.3s cubic-bezier(.4, 0, .2, 1);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.2);
+  --shadow-lg: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--primary-color);
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+/* Utility Classes */
+.display-none { display: none; }
+
+/* Layout */
+#cameraPosition {
+  color: var(--text-light);
+  margin-left: 100px;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Chess Piece Dialog */
+.chesspiece {
+  position: absolute;
+  display: none;
+  background: var(--text-light);
+  padding: 30px;
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  max-width: 600px;
+  width: 97%;
+}
+
+.chesspiece h3 {
+  font-size: 1.2rem;
+}
+
+.chesspiece ul {
+  width: 100%;
+  max-width: 70%;
+  list-style-type: none;
+}
+
+.chesspiece hr {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+.closeDialogButton {
+  position: absolute;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--button-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeDialogButton:hover {
+  background-color: var(--button-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+.closeDialogButton:active {
+  background-color: var(--button-active);
+  box-shadow: var(--shadow-sm);
+}
+
+.closeDialogButton svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-light);
+}
+
+/* Controls */
+.controls {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+  color: var(--text-light);
+}
+/* Controls */
+.controls-left {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  max-width: 50vw;
+}
+
+.toggle {
+  position: relative;
+  width: 51px;
+  height: 31px;
+  display: inline-block;
+}
+
+.toggle input { display: none; }
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: #e9e9ea;
+  transition: var(--transition-smooth);
+  border-radius: 31px;
+  box-shadow: inset 0 0 2px rgba(0,0,0,0.2);
+  cursor: pointer;
+  will-change: background-color;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 27px;
+  width: 27px;
+  left: 2px;
+  bottom: 2px;
+  background: var(--text-light);
+  transition: var(--transition-smooth);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  will-change: transform;
+}
+
+input:checked + .slider {
+  background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Tap to Start Overlay */
+.tap-to-start {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--text-light);
+  display: none; /* Initially hidden */
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .tap-to-start {
+    display: flex; /* Show on mobile */
+  }
+
+  .chesspiece {
+    top: auto;
+    bottom: 8px;
+    transform: translate(-50%, 0);
+    height: 50%;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  .chesspiece h3 {
+    font-size: 1.5rem;
+  }
+
+  .chesspiece ul {
+    max-width: 100%;
+    overflow-y: auto;
+  }
+
+  .chesspiece hr {
+    margin: 5px 0;
+  }
+}
+
+.dialogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.dialogHeader h3 {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+}
